@@ -1,0 +1,7 @@
+h1, nav {
+	text-align: center;
+}
+
+a.active {
+	background-color: blue;
+}

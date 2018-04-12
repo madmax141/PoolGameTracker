@@ -5,18 +5,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    {% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'pooltracker/normalize.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'pooltracker/skeleton.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'pooltracker/custom.css' %}" />
+
     <title>Pool Game Tracker</title>
 </head>
 
 <body>
-	<h1>Pool Game Tracker</h1>
-	<nav>
-		<a href="{% url 'pooltracker:addplayer' %}">Add Player</a>
-		<a href="{% url 'pooltracker:startgame' %}">Start Game</a>
-		<a href="{% url 'pooltracker:leaderboard' %}">Leaderboard</a>
-		<a href="{% url 'pooltracker:activegames' %}">Active Games</a>
-	</nav>
-{% block content %} {% endblock %}
+	<div class='container'>
+		<h1>Pool Game Tracker</h1>
+		<nav>
+			<a
+				{% if request.path == '/pooltracker/addplayer/' %} class="active button" {% endif %}
+				class='button'
+				href="{% url 'pooltracker:addplayer' %}"
+			>
+				Add Player
+			</a>
+			<a
+				{% if request.path == '/pooltracker/startgame/' %} class="active button" {% endif %}
+				class='button'
+				href="{% url 'pooltracker:startgame' %}"
+			>
+				Start Game
+			</a>
+			<a
+				{% if request.path == '/pooltracker/leaderboard/' %} class="active button" {% endif %}
+				class='button'
+				href="{% url 'pooltracker:leaderboard' %}"
+			>
+				Leaderboard
+			</a>
+			<a
+				{% if request.path == '/pooltracker/activegames/' %} class="active button" {% endif %}
+				class='button'
+				href="{% url 'pooltracker:activegames' %}"
+			>
+				Active Games
+			</a>
+		</nav>
+		{% block content %} {% endblock %}
+	</div>
 </body>
 
 </html>
