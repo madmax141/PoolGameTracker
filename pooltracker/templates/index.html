@@ -19,28 +19,28 @@
 		<h1>Pool Game Tracker</h1>
 		<nav>
 			<a
-				{% if request.path == '/pooltracker/addplayer/' %} class="active button" {% endif %}
+				{% if request.path == '/pooltracker/addplayer/' %} class="button button-primary" {% endif %}
 				class='button'
 				href="{% url 'pooltracker:addplayer' %}"
 			>
 				Add Player
 			</a>
 			<a
-				{% if request.path == '/pooltracker/startgame/' %} class="active button" {% endif %}
+				{% if request.path == '/pooltracker/startgame/' %} class="button button-primary" {% endif %}
 				class='button'
 				href="{% url 'pooltracker:startgame' %}"
 			>
 				Start Game
 			</a>
 			<a
-				{% if request.path == '/pooltracker/leaderboard/' %} class="active button" {% endif %}
+				{% if request.path == '/pooltracker/leaderboard/' %} class="button button-primary" {% endif %}
 				class='button'
 				href="{% url 'pooltracker:leaderboard' %}"
 			>
 				Leaderboard
 			</a>
 			<a
-				{% if request.path == '/pooltracker/activegames/' %} class="active button" {% endif %}
+				{% if request.path == '/pooltracker/activegames/' %} class="button button-primary" {% endif %}
 				class='button'
 				href="{% url 'pooltracker:activegames' %}"
 			>

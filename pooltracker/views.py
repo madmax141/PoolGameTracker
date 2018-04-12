@@ -6,8 +6,17 @@ from django.views import generic
 from .models import Player, Game
 from .forms import AddPlayerForm, StartGameForm
 
-def index(request):
-	return render(request, 'index.html')
+def startgame(request):
+	if request.method == 'POST':
+		form = StartGameForm(request.POST);
+
+		if form.is_valid():
+			form.save()
+			return HttpResponseRedirect(reverse('pooltracker:activegames'), { 'form': form })
+	else:
+		form = StartGameForm()
+
+	return render(request, 'startgame.html', { 'form': form })
 
 def addplayer(request):
 	if request.method == 'POST':
@@ -21,28 +30,6 @@ def addplayer(request):
 
 	return render(request, 'addplayer.html', { 'form': form })
 
-def leaderboard(request):
-	players = Player.objects.order_by('-player_wins')
-
-	return render(request, 'leaderboard.html', { 'players': players })
-
-def startgame(request):
-	if request.method == 'POST':
-		form = StartGameForm(request.POST);
-
-		if form.is_valid():
-			form.save()
-			return HttpResponseRedirect(reverse('pooltracker:activegames'), { 'form': form })
-	else:
-		form = StartGameForm()
-
-	return render(request, 'startgame.html', { 'form': form })
-
-def activegames(request):
-	games = Game.objects.all()
-
-	return render(request, 'activegames.html', { 'games': games })
-
 def endgame(request):
 	if request.method == 'POST':
 		player = Player.objects.get(pk=request.POST['winner'])
@@ -51,3 +38,15 @@ def endgame(request):
 		Game.objects.get(pk=request.POST['game_id']).delete()
 
 		return HttpResponseRedirect(reverse('pooltracker:activegames'))
+
+def index(request):
+	return render(request, 'index.html')
+
+def leaderboard(request):
+	players = Player.objects.order_by('-player_wins').exclude(player_wins=0)
+	return render(request, 'leaderboard.html', { 'players': players })
+
+def activegames(request):
+	games = Game.objects.all()
+	return render(request, 'activegames.html', { 'games': games })
+

@@ -1,19 +1,31 @@
 {% extends 'index.html' %}
 {% block content %}
 <h2>Active Games</h2>
-{% for game in games %}
-	<div>
-		<span>{{ game.player_one.player_name }} VS {{ game.player_two.player_name }}</span>
-		<form action="{% url 'pooltracker:endgame' %}" method="post"> {% csrf_token %}
-			<label for='winner'>Winner: </label>
-			<select name='winner' required>
-				<option value="">---------</option>
-				<option value='{{ game.player_one.id }}'>{{ game.player_one.player_name }}</option>
-				<option value='{{ game.player_two.id }}'>{{ game.player_two.player_name }}</option>
-			</select>
-			<input type="hidden" name="game_id" value='{{ game.id }}'>
-			<input type='submit' value='End Game'>
-		</form>
-	</div>
-{% endfor %}
+<div class="active-games-content">
+	{% if not games %}
+	<span class='no-content'>You currently have no games in progress</span>
+	{% else %}
+		<table class='u-full-width'>
+			<tbody>
+			{% for game in games %}
+				<tr>
+					<td class='matchup'>{{ game.player_one.player_name }} VS {{ game.player_two.player_name }}</td>
+					<td class='winner-form'>
+						<form action="{% url 'pooltracker:endgame' %}" method="post"> {% csrf_token %}
+						<label for='winner'>Winner: </label>
+						<select name='winner' required>
+							<option value="">---------</option>
+							<option value='{{ game.player_one.id }}'>{{ game.player_one.player_name }}</option>
+							<option value='{{ game.player_two.id }}'>{{ game.player_two.player_name }}</option>
+						</select>
+						<input type="hidden" name="game_id" value='{{ game.id }}'>
+						<input type='submit' value='End Game'>
+					</form>
+					</td>
+				</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+	{% endif %}
+</div>
 {% endblock %}

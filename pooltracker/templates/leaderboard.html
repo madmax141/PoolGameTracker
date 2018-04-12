@@ -1,21 +1,24 @@
 {% extends 'index.html' %}
 {% block content %}
 <h2>Leader Board</h2>
-
-<table class='u-full-width'>
-	<thead>
-		<tr>
-			<th>Player</th>
-			<th>Wins</th>
-		</tr>
-	</thead>
-	<tbody>
-	{% for player in players %}
-		<tr>
-			<td>{{ player.player_name }}</td>
-			<td>{{ player.player_wins }}</td>
-		</tr>
-	{% endfor %}
-	</tbody>
-</table>
+{% if not players %}
+<span class='no-content'>You currently have no players with scores above 0</span>
+{% else %}
+	<table class='u-full-width leaderboard-table'>
+		<thead>
+			<tr>
+				<th class='player-name-header'>Player</th>
+				<th class='player-wins-header'>Wins</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for player in players %}
+			<tr>
+				<td class='player-name'>{{ player.player_name }}</td>
+				<td class='player-wins'>{{ player.player_wins }}</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+{% endif %}
 {% endblock %}

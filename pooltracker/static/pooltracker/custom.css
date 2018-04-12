@@ -2,6 +2,38 @@ h1, nav {
 	text-align: center;
 }
 
-a.active {
-	background-color: blue;
+h1 {
+	color: #ae0000;
 }
+
+.container {
+	margin-top: 5rem;
+}
+
+nav a.button.button-primary {
+	background-color: #ae0000;
+	border-color: #ae0000;
+}
+
+nav a.button.button-primary:hover, nav a.button.button-primary:focus {
+	background-color: #ae0000f2;
+	border-color: #ae0000f2;
+}
+
+.active-games-content .matchup {
+	font-size: 2rem;
+}
+
+.active-games-content form {
+	margin-bottom: 0px;
+	float: right;
+}
+
+.leaderboard-table th, .leaderboard-table td {
+	padding: 1rem;
+}
+
+.no-content {
+	font-style: italic;
+}
+
