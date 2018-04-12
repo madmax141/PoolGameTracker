@@ -2,9 +2,9 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = 'qd_4+^h8gayb-3u&-d!&fvd54k-10mp*1o_4zwya(3lu+)=m_p'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'qd_4+^h8gayb-3u&-d!&fvd54k-10mp*1o_4zwya(3lu+)=m_p')
 
-DEBUG = True
+DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 
 ALLOWED_HOSTS = []
 
