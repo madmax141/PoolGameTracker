@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pool Game Tracker</title>
+</head>
+
+<body>
+	<h1>Pool Game Tracker</h1>
+	<nav>
+		<a href="{% url 'pooltracker:addplayer' %}">Add Player</a>
+		<a href="{% url 'pooltracker:startgame' %}">Start Game</a>
+		<a href="{% url 'pooltracker:leaderboard' %}">Leaderboard</a>
+		<a href="{% url 'pooltracker:activegames' %}">Active Games</a>
+	</nav>
+{% block content %} {% endblock %}
+</body>
+
+</html>
