@@ -47,6 +47,6 @@ def leaderboard(request):
 	return render(request, 'leaderboard.html', { 'players': players })
 
 def activegames(request):
-	games = Game.objects.all()
+	games = Game.objects.order_by('-id')
 	return render(request, 'activegames.html', { 'games': games })
 
