@@ -2,14 +2,14 @@
 
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
 
     {% load static %}
-	<link rel="stylesheet" type="text/css" href="{% static 'pooltracker/normalize.css' %}" />
-	<link rel="stylesheet" type="text/css" href="{% static 'pooltracker/skeleton.css' %}" />
-	<link rel="stylesheet" type="text/css" href="{% static 'pooltracker/custom.css' %}" />
+	<link rel='stylesheet' type='text/css' href='{% static "pooltracker/normalize.css" %}' />
+	<link rel='stylesheet' type='text/css' href='{% static "pooltracker/skeleton.css" %}' />
+	<link rel='stylesheet' type='text/css' href='{% static "pooltracker/custom.css" %}' />
 
     <title>Pool Game Tracker</title>
 </head>
@@ -19,30 +19,30 @@
 		<h1>Pool Game Tracker</h1>
 		<nav>
 			<a
-				{% if request.path == '/addplayer/' %} class="button button-primary" {% endif %}
+				{% if request.path == '/addplayer/' %} class='button button-primary' {% endif %}
 				class='button'
-				href="{% url 'pooltracker:addplayer' %}"
+				href='{% url "pooltracker:addplayer" %}'
 			>
 				Add Player
 			</a>
 			<a
-				{% if request.path == '/startgame/' %} class="button button-primary" {% endif %}
+				{% if request.path == '/startgame/' %} class='button button-primary' {% endif %}
 				class='button'
-				href="{% url 'pooltracker:startgame' %}"
+				href='{% url "pooltracker:startgame" %}'
 			>
 				Start Game
 			</a>
 			<a
-				{% if request.path == '/leaderboard/' %} class="button button-primary" {% endif %}
+				{% if request.path == '/leaderboard/' %} class='button button-primary' {% endif %}
 				class='button'
-				href="{% url 'pooltracker:leaderboard' %}"
+				href='{% url "pooltracker:leaderboard" %}'
 			>
 				Leaderboard
 			</a>
 			<a
-				{% if request.path == '/activegames/' %} class="button button-primary" {% endif %}
+				{% if request.path == '/activegames/' %} class='button button-primary' {% endif %}
 				class='button'
-				href="{% url 'pooltracker:activegames' %}"
+				href='{% url "pooltracker:activegames" %}'
 			>
 				Active Games
 			</a>

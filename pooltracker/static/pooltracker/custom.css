@@ -1,4 +1,4 @@
-/*** GLOBAL ***/
+/*** Global and below 400px width styles ***/
 b {
 	font-size: 1.5rem;
 }
@@ -73,8 +73,9 @@ nav a.button.button-primary:hover, nav a.button.button-primary:focus {
 	float: right;
 }
 
-.activegames-content .row {
-	border-bottom: 1px solid grey;
+.activegames-content .row:not(:first-child) {
+	padding: 1rem 0;
+	border-top: 1px solid #80808061;
 }
 
 .winner-form select {
@@ -84,4 +85,36 @@ nav a.button.button-primary:hover, nav a.button.button-primary:focus {
 .leaderboard-table th, .leaderboard-table td {
 	padding: 1rem;
 }
+
+/* Larger than mobile */
+@media (min-width: 400px) {
+	h1 {
+		font-size: 3.5rem;
+	}
+
+	.activegames-content form {
+		width: 100%;
+	}
+}
+
+/* Larger than tablet */
+@media (min-width: 750px) {
+	h1 {
+		font-size: 5rem;
+	}
+}
+
+/* Larger than desktop */
+@media (min-width: 1000px) {
+	nav a.button {
+		padding: 0px 30px;
+		width: initial;
+	}
+
+	.addplayer-content, .startgame-content {
+		display: flex;
+		justify-content: center;
+	}
+}
+
 
